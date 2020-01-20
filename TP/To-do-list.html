@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To do List</title>
+    <style>
+        body{
+margin-top: 20px;
+
+        }
+        table {
+            border: 1px;
+            border-style: solid;
+            border-color: black;
+            width: 20%;
+        }
+
+        td {
+            border: 1px;
+            border-style: solid;
+            border-color: black;
+            width: 20%;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div>
+
+        <form method="post">
+            <div>
+
+
+                <label for="Tache">Tache</label>
+                <input type="text" id="tache" name="tache">
+
+
+                <label for="categorie">Categorie</label>
+                <input type="text" id="categorie" name="categorie">
+                <input type="submit" id="btSubmit" name="validation">
+
+
+            </div>
+<br>
+<br>
+            <table>
+
+                <thead>
+                    <table>
+
+                        <tr>
+                            <td>Fait</td>
+                            <td>Tache</td>
+                            <td>Categorie</td>
+                        </tr>
+
+
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox" id="acheterdulait" onclick="myFunction()"></td>
+                        <td>Acheter du lait</td>
+                        <td>Perso</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" id="sortirlechien" onclick="myFunction()"></td>
+                        <td>Sortir le chien</td>
+                        <td>Perso</td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" id="faireletp" onclick="myFunction()"> </td>
+                        <td>Faire le TP</td>
+                        <td>Travail</td>
+                    </tr>
+
+                </tbody>
+
+
+            </table>
+
+
+            <script>
+                function myFunction() {
+                    var checkBox = document.getElementById("myCheck");
+                    var text = document.getElementById("text");
+                    if (checkBox.checked == true) {
+                        text.style.display = "block";
+                    } else {
+                        text.style.display = "none";
+                    }
+                }
+
+                <p id="text" style="display:none">Checkbox is CHECKED!</p>
+            </script>
+
+</body>
+
+</html>
+
+
+
+</div>
+
+
+
+
+</body>
+
+</html>

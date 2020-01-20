@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Liste des étoiles</title>
+    <script src="js-data/astronomie.js"></script>
+    <script src="libraries/array-utils.js"></script>
+
+</head>
+
+<body>
+
+    <div id="cible"></div>
+
+    <div id="cible2"></div>
+
+    <script>
+
+    document.getElementById("cible2").innerHTML= obtenirTableHtml(data);
+    </script>
+
+    </script>
+
+    <script>
+        //cible un elemeny de la page 
+        //dans lequel je vas écrire le code html
+        //de la table
+        var cible = document.getElementById("cible");
+
+        var codeHtml = "<table>";
+        //affichage de la ligne d'en-tete
+        //si et seulement si la tableau data n'est pas vide
+        if (data.length > 0) {
+            codeHtml += "<tr>";
+
+            for (clef in data[0]) {
+                codeHtml += "<th>" + [clef] + "</th>";
+            }
+            codeHtml += "</tr>";
+
+        }
+
+        //boucle sur le tableau ordinal
+        //pour générer les lignes (>tr>)
+        //du tableau
+        for (let ligne of data) {
+            codeHtml += "<tr>";
+
+            //pour générer les colonnes (<td>)
+
+            for (let clef in ligne) {
+                codeHtml += "<td>" + ligne[clef] + "</td>";
+            }
+            codeHtml += "<td>";
+        }
+
+        codeHtml += "</table>";
+        //ecrire le code HTML dans le cible
+        //pour l'afficher sur la page
+        cible.innerHTML = codeHtml;
+        console.table(data);
+
+
+    </script>
+
+
+</body>
+
+</html>
