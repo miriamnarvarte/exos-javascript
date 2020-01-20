@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        /*
+
+        var name = "Bob";
+        console.log("hello " + name);
+        console.log(`
+        Hello
+        ${name}
+    `);
+        console.log(typeof name);
+
+        var adult = true;
+        console.log(typeof adult);
+
+
+        var nom = "Seb";
+        var age = 40;
+        console.log(nom + age)
+*/
+    </script>
+
+
+    <script>
+        /*
+        //fenêtre de saisie
+        var nom = prompt("votre nom");
+        //fenêtre de confirmation
+        var proceed = confirm("voulez-vous continuer ?");
+        */
+    </script>
+
+    <script>
+
+        /*************************
+        ***********Test de l'âge
+        ***************************/
+
+
+        //declaration des variables
+        var name= null;
+   
+        var valid = true;
+
+        console.log(typeof name)
+        //Validation de la saisie
+        while(! name || name == "null" || name== "undefined") {
+            name= prompt ("votre nom");
+        
+        }
+
+        var age = prompt("votre âge");
+        
+        //conversion de la saisie en nombre entier
+        age = parseInt (age)
+
+        if (! age || age == "null"){
+            alert("Vous devez saisir un âge");
+            valid = false;
+        }
+
+        if (valid) {
+           
+            alert ("dans un an vous aurez " + (age +1) + " ans");
+
+            var message = "Bonjour " + name;
+
+            //Test de l'age
+            if (age >= 18) {
+                message += " vous êtes majeur";
+            } else {
+                message += " vous êtes mineur";
+            }
+
+        //Affichage resultat
+        alert (message);
+
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>
