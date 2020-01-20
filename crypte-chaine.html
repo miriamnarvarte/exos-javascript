@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="res"> </div>
+    <script>
+        
+
+
+    function cesar(str, caractere) {
+  
+        if (caractere < 0)
+          return cesar(str, caractere + 26);
+        
+        // variable pour stocker le résultat
+        var res = '';
+        // Parcourir chaque caractére
+        for (var i = 0; i < str.length; i++) {
+          // Récupérer le caractére que nous allons ajouter
+          var c = str[i];
+          // Vérifier si c'est une lettre
+          if (c.match(/[a-z]/i)) {
+            // Récupérer son code
+            var code = str.charCodeAt(i);
+            // Lettres majuscules
+            if ((code >= 65) && (code <= 90))
+              c = String.fromCharCode(((code - 65 + caractere) % 26) + 65);
+            // Lettres minuscules
+            else if ((code >= 97) && (code <= 122))
+              c = String.fromCharCode(((code - 97 + caractere) % 26) + 97);
+          }
+          // Ajouter le caractére
+          res += c;
+        }
+        // Résultat
+        return res;
+      };
+      console.log(cesar("HIJKL",10))
+
+    
+
+
+
+
+    </script>
+
+</body>
+</html>

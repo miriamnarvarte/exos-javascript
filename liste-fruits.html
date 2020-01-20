@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Liste des fruits</title>
+</head>
+
+<body>
+    <div>
+
+        <form method="post">
+
+            <input type="text" placeholder="votre fruit" id="inputFruit">
+            <button type="submit">Ajouter</button>
+        </form>
+    </div>
+    <ul>
+        <li>Pommes <button class="delete"> supprimer </button></li>
+        <li>Poires <button class="delete"> supprimer </button></li>
+        <li>Oranges <button class="delete"> supprimer </button></li>
+
+
+    </ul>
+
+    <script>
+
+        //ciblage des elements
+        form = document.querySelector('form');
+        fruitInput = document.querySelector('#inputFruit');
+        fruitList = document.querySelector('ul');
+
+        //Liste des fruits
+        var fruitsArray = [];
+
+        //Remplissage de la liste de fruits 
+        for (item of fruitList.children) {
+            fruitsArray.push(item.innerText
+                .replace("supprimer", "")
+                .trim()
+                .toLowerCase());
+
+        }
+
+        //delegation d'évenement pour gérer la suppression
+        //Des elements existenet et également des ceux
+        //qui sont créés par la suite
+
+        fruitList.onclick = function (even) {
+
+            let target = even.target;
+            if (target.classList.contains("delete")) {
+
+                //Suppressiondu tableau fruitsArray
+                let fruitName = target.parentNode.textContent.toLowerCase().replace("supprimer", "").trim()
+                fruitsArray.splice(
+                    fruitsArray.indexOf(fruitName),
+                    1
+                );
+
+                //Suppression du DOM
+                target.parentNode.remove();
+                console.log(fruitsArray);
+            }
+
+        }
+
+        console.log(fruitsArray);
+
+        form.onsubmit = function (ev) {
+            //empêche l'envoi de formulaire à un serveur
+            ev.preventDefault();
+
+            //Récuperation de la saisie
+            newFruitText = fruitInput.value;
+
+
+            let isNotEmpty = newFruitText.trim() != "";
+            let isNotAlreadyInList = fruitsArray.indexOf(newFruitText.trim().toLowerCase()) == -1;
+
+            //Ajout du nouveau fruit
+            //Si la saisie n'est pas vide et si l'évenement n'existe pas déjà
+            if (isNotEmpty && isNotAlreadyInList) {
+
+                //ajoute une nouveau élémnet à fruitsArray
+                fruitsArray.push(newFruitText);
+
+
+                //Création d'un li
+                let newItem = document.createElement("li");
+
+                //definition du texte
+                newItem.textContent = newFruitText;
+
+                //ajout le boutton supprimer
+                let deleteButton = document.createElement("button");
+                deleteButton.textContent = "supprimer";
+                deleteButton.classList.add("delete");
+                newItem.appendChild(deleteButton);
+
+
+                //Attachement du nouveau élément au DOM
+                fruitList.appendChild(newItem);
+
+                //reinitialisation de la saisie
+                fruitInput.value = "";
+
+                //focus sur la champ de saisie
+                fruitInput.focus();
+
+            }
+
+        }
+
+
+    </script>
+</body>
+
+</html>

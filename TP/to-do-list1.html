@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To do List</title>
+    <style>
+        body {
+            margin-top: 20px;
+
+        }
+
+        table {
+            border: 1px;
+            border-style: solid;
+            border-color: black;
+            width: 35%;
+        }
+
+        td {
+            border: 1px;
+            border-style: solid;
+            border-color: black;
+            width: 35%;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div>
+
+        <form method="post">
+            <div>
+
+
+                <label for="Tache">Tache</label>
+                <input type="text" id="tache" name="tache">
+
+
+                <label for="categorie">Categorie</label>
+                <input type="text" id="categorie" name="categorie">
+
+                <input type="submit" id="btSubmit" name="validation">
+
+
+            </div>
+            <br>
+            <br>
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <td>Fait</td>
+                        <td>Tache</td>
+                        <td>Categorie</td>
+                    </tr>
+
+
+                    <tr>
+                        <td><input type="checkbox" id="checkbox" checked="checked"></input> </td>
+                        <td>Acheter du lait</td>
+                        <td>Perso</td>
+                    </tr>
+
+
+                </thead>
+
+
+
+            </table>
+
+            <script>
+                //ciblage des elements
+                var form = document.querySelector('form');
+                var tache = document.querySelector('#tache');
+                var categorie = document.querySelector('#categorie');
+                var td = document.querySelector('td');
+
+
+
+                var tacheArray = [];//Liste des taches
+
+
+                //Remplissage de la liste de taches 
+                for (item of td.children) {
+                    tacheArray.push(item.textContent);
+
+                }
+
+
+                form.onsubmit = function (event) {
+                    //empêche l'envoi de formulaire à un serveur
+                    event.preventDefault();
+
+                    //Récuperation de la saisie
+                    newTacheText = tache.value;
+
+
+                    let isNotEmpty = newTacheText.trim() != "";
+                    let isNotAlreadyInList = tacheArray.indexOf(newTacheText.trim().toLowerCase()) == -1;
+
+
+                    if (isNotEmpty) {
+
+                        //ajoute une nouveau élémnet à fruitsArray
+                        tacheArray.push(this, newTacheText);
+
+
+                        let newItem = document.createElement("tr");
+                        newItem.id = 'NewItem';
+                        //document.table.appendChild(newItem);
+
+                        //definition du texte
+                        newItem.textContent = newTacheText;
+
+                        //Attachement du nouveau élément au DOM
+                        td.appendChild(newItem);
+
+                        //reinitialisation de la saisie
+                        tache.value = "";
+
+                        //focus sur la champ de saisie
+                        tache.focus();
+
+                    }
+                }
+
+            </script>
+
+
+</body>
+
+</html>

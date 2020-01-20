@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        //variable du probleme
+        var star = 10;
+        var end = 0;
+        var current = start;
+        
+        //cible du compte a rebours dans le DOM
+        var countdown = document.getElementById("countodwn");
+
+        countdown.textContent = current;
+
+        var countInterval = setInterval(
+            function () {
+                current--;
+            }
+        )
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

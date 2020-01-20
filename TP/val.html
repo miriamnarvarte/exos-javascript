@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Creation du formulaire-->
+    <form method="post">
+        <label>Tache</label>
+        <input type="text" name="inputTache" id="inputTache">
+        <label>Categories</label>
+        <input type="text" name="inputCategories" id="inputCategories">
+        <button type="submit">Valider</button>
+    </form>
+    <br />
+
+    <div>
+        <!--Creation du tableau-->
+        <TABLE BORDER="1">
+            <CAPTION> Do to liste </CAPTION>
+            <TR>
+                <TH> Fait </TH>
+                <TH> Taches </TH>
+                <TH> Categories </TH>
+
+            </TR>
+            <TR>
+                <td> <input type="checkbox" checked="checked"> </td>
+                <td> Creer le tableau </td>
+                <td> Travail </td>
+
+            </TR>
+        </TABLE>
+
+    </div>
+
+    <script>
+        var form = document.querySelector("form");//Ciblage du formulaire
+        var tache = document.querySelector("#inputTache");//Ciblage du texte saisie dans le label taches
+        var categories = document.querySelector("#inputCategories");//Ciblage du texte saisie dans le label taches
+        var td = document.querySelector("td");//Ciblage du tableau
+
+
+        var arrayTaches = [];//Liste des taches
+
+        //Remplissage de la liste des taches
+        for (item of td.children) {//Pour chaque objet nouveau dans le 
+            arrayTaches.push(item.textContent);
+           
+        }
+
+        form.onsubmit = function (event) {
+            //empeche l'envoi du formulaire a un serveur
+            event.preventDefault();
+
+            //Recuperation de la saisie
+            newTachesText = tache.value;
+            newCategoriesText = categories.value;
+
+            //On enregistre les conditions dans des variables
+            let isNotEmpty = newTachesText.trim() != "";
+
+            if (isNotEmpty) {
+                arrayTaches.push(newTachesText);
+
+                let newItem = document.createElement("table");
+
+                newItem.textContent = newTachesText;
+
+                td.appendChild(newItem);
+
+                tache.value = "";
+              
+            }
+
+            if (isNotEmpty) {
+                arrayTaches.push(newCategoriesText);
+
+                let newItem2 = document.createElement("table");
+
+                newItem2.textContent = newCategoriesText;
+
+                td.appendChild(newItem2);
+
+            
+                categories.value= "";
+                categories.focus();
+            }
+
+
+        }
+
+    </script>
+
+</body>
+
+</html>

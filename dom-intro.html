@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="libraries/array-utils.js"></script>
+</head>
+
+<body>
+    <h1>DOM</h1>
+    <div id="output"></div>
+
+    <script>
+
+        //cible du résultat affiché sur la navigateur
+        var output = document.getElementById("output");
+
+        var fruitList = ["pommes", "oranges", "poires", "oranges", "pommes", "figues", "poires"];
+        var filmList = ["alien", "firefly", "titanic", "alien", "firely"];
+
+
+
+
+
+        output.innerHTML = getHtmlList(deduplication(filmList.concat(fruitList)).sort());
+
+
+    </script>
+
+</body>
+
+</html>
